@@ -1,0 +1,18 @@
+function createCountryCards(acc, { name, flags }) {
+  acc +
+  (
+    <li class="country-list__item">
+      <h2 class="country-list__name">${name.common}</h2>
+      <img
+        class="country-list__flag"
+        src="${flags.svg}"
+        alt="${name.official}"
+        width="50"
+      ></img>
+    </li>
+  );
+}
+
+export function renderCountriesList(array) {
+  return array.reduce(createCountryCards, '');
+}
