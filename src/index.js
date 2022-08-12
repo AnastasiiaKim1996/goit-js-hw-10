@@ -28,7 +28,7 @@ function onInputFetch(e) {
       countryList.innerHTML = '';
       countryInfoBox.innerHTML = '';
 
-      if (response > 10)
+      if (response.length > 10)
         Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
