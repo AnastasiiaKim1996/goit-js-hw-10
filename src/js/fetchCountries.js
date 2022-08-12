@@ -1,13 +1,15 @@
-const BASE_URL = 'https://restcountries.com/v3.1';
-const paramsFilter = 'name,capital,flags,languages,population';
+const fetchCountries = name => {
+  const BASE_URL = `https://restcountries.com/v3.1/name/${name}`;
+  const params = `?fields=name,capital,population,flags,languages`;
+  const URL = `${BASE_URL}${params}`;
 
-export function fetchCountries(name) {
-  return fetch(`${BASE_URL}/name/${name}?fields=${paramsFilter}`).then(
-    response => {
-      if (!response.ok) {
-        throw new Error(`404 not found: ${response.statusText}`);
-      }
-      return response.json();
+  return fetch(URL).then(res => {
+    if (!res.ok) {
+      throw new Error(`404 not found: ${res.statusText}`);
     }
-  );
-}
+
+    return res.json();
+  });
+};
+
+export { fetchCountries };
